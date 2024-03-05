@@ -15,6 +15,7 @@ app.post('/doc', (req, res) => {
   // Set custom response headers
   res.set({
     'X-Content-Type-Options': 'nosniff',
+    'Access-Control-Expose-Headers' : 'server',
     'Content-Type' : 'application/json'
   });
 
