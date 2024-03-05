@@ -14,7 +14,8 @@ app.get('/', (req, res) => {
 app.post('/doc', (req, res) => {
   // Set custom response headers
   res.set({
-    'X-Content-Type-Options': 'nosniff'
+    'X-Content-Type-Options': 'nosniff',
+    'Content-Type' : 'application/json'
   });
 
   // Create a JSON object
