@@ -14,8 +14,7 @@ app.get('/', (req, res) => {
 app.get('/doc', (req, res) => {
   // Set custom response headers
   res.set({
-    'Custom-Header': 'Value',
-    'Another-Header': 'Another Value'
+    'X-Content-Type-Options': 'nosniff'
   });
 
   // Create a JSON object
