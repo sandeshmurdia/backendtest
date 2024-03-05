@@ -16,7 +16,8 @@ app.post('/doc', (req, res) => {
   res.set({
     'X-Content-Type-Options': 'nosniff',
     'Access-Control-Expose-Headers' : 'Server',
-    'Content-Type' : 'application/json'
+    'Content-Type' : 'application/json',
+    'Access-Control-Allow-Origin': '*'
   });
 
   // Create a JSON object
