@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Page Not Found</title>
+    <style>
+      :root {
+        --button: hsl(0, 0%, 10%);
+        --shadow: hsl(0, 0%, 0%);
+        --bg: hsl(0, 0%, 10%);
+        --header: hsl(0, 0%, 15%);
+        --color: hsl(0, 0%, 68%);
+        --lit-header: hsl(0, 0%, 25%);
+        --lit-li: hsl(0, 0%, 39%);
+        --speed: 2s;
+        --swing-x: 0;
+        --swing-y: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+        transform-style: preserve-3d;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        font-family: "Roboto", sans-serif;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg);
+        color: var(--color);
+        perspective: 1200px;
+      }
+
+      a {
+        text-transform: uppercase;
+        text-decoration: none;
+        background: var(--button);
+        color: var(--button-color);
+        padding: 1rem 4rem;
+        border-radius: 4rem;
+        font-size: 0.875rem;
+        letter-spacing: 0.05rem;
+      }
+
+      p {
+        font-weight: 100;
+        font-size: 1.2rem;
+      }
+
+      h1 {
+        animation: swing var(--speed) infinite alternate ease-in-out;
+        font-size: clamp(3rem, 20vmin, 12rem); /* Adjusted font size range */
+        font-family: "Open Sans", sans-serif;
+        margin: 0;
+        margin-bottom: 8rem;
+        letter-spacing: 1rem;
+        transform: translate3d(0, 0, 0vmin);
+        --x: calc(50% + (var(--swing-x) * 0.5) * 1%);
+        background: radial-gradient(var(--lit-header), var(--header) 45%)
+          var(--x) 100% / 200% 200%;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      h1:after {
+        content: "OOPS";
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--shadow);
+        filter: blur(1.5vmin);
+        transform: scale(1.05) translate3d(0, 12%, -10vmin)
+          translate(
+            calc((var(--swing-x, 0) * 0.05) * 1%),
+            calc((var(--swing-y) * 0.05) * 1%)
+          );
+      }
+
+      .info {
+        text-align: center;
+        line-height: 1.5;
+        max-width: clamp(16rem, 90vmin, 25rem);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 2rem; /* Add some spacing above the list */
+      }
+
+      li {
+        margin-bottom: -0.2rem; /* Adjust spacing between list items */
+        padding: 0.1rem 1rem; /* Add padding to list items */
+        border-radius: 0.5rem; /* Add some rounded corners */
+      }
+
+      li strong {
+        font-weight: bold;
+        color: var(--lit-li); /* Adjust color of strong text */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OOPS</h1>
+    <div class="info">
+      <h2>404- We can't find that page</h2>
+      <p><span id="errorMessage"></span></p>
+    </div>
+    <!-- JavaScript code -->
+    <script>
+      let foo =
+        '{"available_routes": ["foo", "bar"], "foo": "Some description for foo", "bar": "Some description for bar"}';
+      let jsonObject = JSON.parse(foo);
+      let errorMessageSpan = document.getElementById("errorMessage");
+      if (errorMessageSpan && jsonObject.available_routes) {
+        let routesList = "<ul>";
+        jsonObject.available_routes.forEach((route) => {
+          routesList += `<li><strong>${route}:</strong> ${jsonObject[route]}</li>`;
+        });
+        routesList += "</ul>";
+        errorMessageSpan.innerHTML = routesList;
+      }
+    </script>
+  </body>
+</html>
